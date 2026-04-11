@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assya Ouazari — Portfolio</title>
+<style>
+:root {
+  --violet: #5C4FC7; --violet-light: #EAE8F8; --violet-mid: #7B6EE8;
+  --dark: #1A1A2E; --gray: #4A4A4A; --light: #F8F7FF; --white: #FFFFFF;
+  --teal: #1D9E75; --teal-light: #E1F5EE;
+  --amber: #BA7517; --amber-light: #FAEEDA;
+  --coral: #D85A30; --coral-light: #FAECE7;
+  --blue: #185FA5; --blue-light: #E6F1FB;
+  --red: #A32D2D; --red-light: #FCEBEB;
+  --green: #3B6D11; --green-light: #EAF3DE;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Segoe UI", Arial, sans-serif; background: var(--light); color: var(--gray); line-height: 1.6; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--white); border-bottom: 1px solid #e0ddf8;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 56px;
+  box-shadow: 0 1px 8px rgba(92,79,199,0.08);
+}
+nav .logo { font-weight: 700; font-size: 16px; color: var(--violet); }
+nav ul { display: flex; gap: 1.5rem; list-style: none; }
+nav ul li a { text-decoration: none; font-size: 13px; color: var(--gray); transition: color 0.15s; }
+nav ul li a:hover { color: var(--violet); }
+
+.hero {
+  background: linear-gradient(135deg, #1A1A2E 0%, #2D2680 60%, #5C4FC7 100%);
+  color: white; padding: 5rem 2rem 4rem; text-align: center; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 30%, rgba(123,110,232,0.3) 0%, transparent 60%);
+}
+.hero-content { position: relative; max-width: 800px; margin: 0 auto; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; margin-bottom: 0.5rem; }
+.hero h1 span { color: #A89FF5; }
+.hero .subtitle { font-size: 1.1rem; color: #c5bfff; margin-bottom: 1.5rem; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 2rem; }
+.hero-tag { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); padding: 4px 14px; border-radius: 99px; font-size: 12px; color: #e8e4ff; }
+.hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn { padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; transition: all 0.15s; }
+.btn-primary { background: var(--violet-mid); color: white; }
+.btn-primary:hover { background: #6a5dd4; }
+.btn-outline { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.4); }
+.btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+.stats { background: var(--white); display: flex; justify-content: center; flex-wrap: wrap; border-bottom: 1px solid #e8e5ff; }
+.stat { padding: 1.2rem 2.5rem; text-align: center; border-right: 1px solid #e8e5ff; }
+.stat:last-child { border-right: none; }
+.stat-num { font-size: 1.6rem; font-weight: 700; color: var(--violet); }
+.stat-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
+
+section { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+.section-title { font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+.section-subtitle { font-size: 14px; color: #888; margin-bottom: 2rem; }
+.divider { width: 40px; height: 3px; background: var(--violet); border-radius: 2px; margin: 0.5rem 0 2rem; }
+
+/* FEATURED */
+.featured-card {
+  background: linear-gradient(135deg, var(--dark) 0%, #2D2680 100%);
+  border-radius: 16px; padding: 2.5rem; color: white;
+  display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
+  margin-bottom: 2rem; position: relative; overflow: hidden;
+}
+.featured-card::after {
+  content: ""; position: absolute; right: -30px; top: -30px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(123,110,232,0.2);
+}
+.featured-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 3px 12px; border-radius: 99px; font-size: 11px; color: #c5bfff; margin-bottom: 0.8rem; }
+.featured-card h3 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+.featured-card .org { color: #A89FF5; font-size: 14px; margin-bottom: 1rem; }
+.featured-card p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.7; max-width: 580px; }
+.featured-skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+.featured-skill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 6px; font-size: 11px; color: #d4cfff; }
+.featured-svg { position: relative; z-index: 1; flex-shrink: 0; }
+
+/* PROJECT GRID */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.project-card {
+  background: var(--white); border-radius: 14px;
+  border: 1px solid #e8e5ff; overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex; flex-direction: column;
+}
+.project-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(92,79,199,0.12); }
+
+/* SVG ILLUSTRATION BANNERS */
+.proj-banner { width: 100%; height: 180px; display: block; }
+
+.project-body { padding: 1.2rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0.7rem; }
+.tag { font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+.tag-neuro { background: var(--teal-light); color: #085041; }
+.tag-bci { background: var(--violet-light); color: #3C3489; }
+.tag-ia { background: var(--blue-light); color: #0C447C; }
+.tag-signal { background: var(--amber-light); color: #633806; }
+.tag-robot { background: var(--coral-light); color: #4A1B0C; }
+.tag-ethics { background: var(--red-light); color: #501313; }
+.tag-green { background: var(--green-light); color: var(--green); }
+.project-title { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 0.4rem; }
+.project-org { font-size: 12px; color: #888; margin-bottom: 0.6rem; }
+.project-desc { font-size: 12px; color: var(--gray); line-height: 1.6; margin-bottom: 0.8rem; flex: 1; }
+.project-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+.project-date { font-size: 11px; color: #aaa; }
+.project-link { font-size: 11px; color: var(--violet); text-decoration: none; border: 1px solid #c5bfff; padding: 4px 12px; border-radius: 6px; transition: background 0.15s; }
+.project-link:hover { background: var(--violet-light); }
+
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.skill-card { background: var(--white); border: 1px solid #e8e5ff; border-radius: 10px; padding: 1rem 1.2rem; }
+.skill-label { font-size: 11px; font-weight: 600; color: var(--violet); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.skill-items { display: flex; flex-wrap: wrap; gap: 5px; }
+.skill-pill { font-size: 11px; background: var(--violet-light); color: #3C3489; padding: 2px 8px; border-radius: 4px; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.about-text p { margin-bottom: 1rem; font-size: 14px; line-height: 1.8; }
+.edu-list { display: flex; flex-direction: column; gap: 16px; }
+.edu-item { display: flex; gap: 12px; }
+.edu-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--violet); margin-top: 5px; flex-shrink: 0; }
+.edu-degree { font-size: 13px; font-weight: 600; color: var(--dark); }
+.edu-school { font-size: 12px; color: #888; }
+.edu-year { font-size: 11px; color: var(--violet); }
+
+.contact-strip { background: var(--violet); color: white; padding: 3rem 2rem; text-align: center; }
+.contact-strip h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.contact-strip p { opacity: 0.85; margin-bottom: 1.5rem; }
+.contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.contact-link { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 8px 20px; border-radius: 8px; text-decoration: none; font-size: 13px; }
+.contact-link:hover { background: rgba(255,255,255,0.25); }
+
+footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 13px; }
+
+@media (max-width: 640px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .featured-card { grid-template-columns: 1fr; }
+  .featured-svg { display: none; }
+  .stats { flex-direction: column; }
+  .stat { border-right: none; border-bottom: 1px solid #e8e5ff; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Assya Ouazari</div>
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>Assya <span>Ouazari</span></h1>
+    <p class="subtitle">Engineering Student in Digital Health &amp; AI — Neurotech · BCI · Neuroimaging</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Brain-Computer Interfaces</span>
+      <span class="hero-tag">Neuroimaging · fMRI · EEG</span>
+      <span class="hero-tag">Machine Learning</span>
+      <span class="hero-tag">Biomedical Signal Processing</span>
+      <span class="hero-tag">MATLAB · Python</span>
+      <span class="hero-tag">École Jules Verne · Amiens</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="mailto:assya.ouazari@etud.u-picardie.fr" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Research Projects</div></div>
+  <div class="stat"><div class="stat-num">2 years</div><div class="stat-label">Research Internships</div></div>
+  <div class="stat"><div class="stat-num">1</div><div class="stat-label">International Internship</div></div>
+  <div class="stat"><div class="stat-num">C1</div><div class="stat-label">English Level</div></div>
+</div>
+
+<section id="projects">
+  <p class="section-title">Projects &amp; Research</p>
+  <div class="divider"></div>
+  <p class="section-subtitle">Selected academic and research work — ordered by relevance to neurotech</p>
+
+  <!-- FEATURED JULICH -->
+  <div class="featured-card">
+    <div>
+      <span class="featured-badge">★ International Research — Summer 2026</span>
+      <h3>Neuroimaging &amp; Machine Learning — Forschungszentrum Jülich</h3>
+      <div class="org">Institute of Neuroscience and Medicine – Brain &amp; Behaviour (INM-7) · Jülich, Germany</div>
+      <p>Integrated into the Cognitive &amp; Clinical Neuroscience group, supervised by Sarah Genon &amp; Somayeh Maleki Balajoo. Contribution to fMRI neuroimaging pipelines, data quality control, and ML-based analysis using Python &amp; Scikit-learn. Participation in lab meetings, journal clubs and scientific seminars. 9 weeks.</p>
+      <div class="featured-skills">
+        <span class="featured-skill">fMRI / MRI</span>
+        <span class="featured-skill">Python</span>
+        <span class="featured-skill">Scikit-learn</span>
+        <span class="featured-skill">ML pipelines</span>
+        <span class="featured-skill">Data QC</span>
+        <span class="featured-skill">INM-7 · Jülich</span>
+      </div>
+    </div>
+    <div class="featured-svg">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="54" fill="rgba(123,110,232,0.15)" stroke="rgba(168,159,245,0.4)" stroke-width="1.5"/>
+        <ellipse cx="60" cy="60" rx="32" ry="38" stroke="#A89FF5" stroke-width="2" fill="none"/>
+        <path d="M60 22 Q80 40 78 60 Q76 80 60 98" stroke="#7B6EE8" stroke-width="1.5" fill="none"/>
+        <path d="M60 22 Q40 40 42 60 Q44 80 60 98" stroke="#7B6EE8" stroke-width="1.5" fill="none"/>
+        <path d="M28 50 Q45 45 60 48 Q75 51 92 46" stroke="#A89FF5" stroke-width="1.2" fill="none"/>
+        <path d="M27 65 Q44 68 60 65 Q76 62 93 66" stroke="#A89FF5" stroke-width="1.2" fill="none"/>
+        <circle cx="60" cy="60" r="5" fill="#7B6EE8"/>
+        <circle cx="60" cy="35" r="3" fill="rgba(168,159,245,0.6)"/>
+        <circle cx="60" cy="85" r="3" fill="rgba(168,159,245,0.6)"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="project-grid">
+
+    <!-- MRI SEGMENTATION -->
+    <div class="project-card">
+      <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="180" fill="#0a2540"/>
+        <!-- MRI scanner outline -->
+        <rect x="30" y="55" width="140" height="90" rx="45" fill="none" stroke="#1D9E75" stroke-width="2.5"/>
+        <rect x="55" y="70" width="90" height="60" rx="30" fill="rgba(29,158,117,0.08)" stroke="#1D9E75" stroke-width="1.5"/>
+        <!-- Brain slices -->
+        <ellipse cx="100" cy="100" rx="28" ry="22" fill="none" stroke="#5DCAA5" stroke-width="1.5"/>
+        <ellipse cx="100" cy="100" rx="18" ry="14" fill="none" stroke="#9FE1CB" stroke-width="1"/>
+        <ellipse cx="100" cy="100" rx="8" ry="6" fill="rgba(29,158,117,0.3)" stroke="#5DCAA5" stroke-width="1"/>
+        <!-- Patient bed -->
+        <rect x="40" y="112" width="120" height="8" rx="4" fill="rgba(29,158,117,0.2)" stroke="#1D9E75" stroke-width="1"/>
+        <!-- Right side: segmentation grid -->
+        <rect x="200" y="30" width="55" height="50" rx="4" fill="rgba(29,158,117,0.08)" stroke="#1D9E75" stroke-width="1.2"/>
+        <rect x="260" y="30" width="55" height="50" rx="4" fill="rgba(29,158,117,0.15)" stroke="#5DCAA5" stroke-width="1.2"/>
+        <rect x="200" y="86" width="55" height="50" rx="4" fill="rgba(29,158,117,0.15)" stroke="#5DCAA5" stroke-width="1.2"/>
+        <rect x="260" y="86" width="55" height="50" rx="4" fill="rgba(29,158,117,0.25)" stroke="#9FE1CB" stroke-width="1.2"/>
+        <!-- Brain shapes in grid -->
+        <ellipse cx="227" cy="55" rx="18" ry="14" fill="none" stroke="#5DCAA5" stroke-width="1.2"/>
+        <ellipse cx="287" cy="55" rx="18" ry="14" fill="rgba(29,158,117,0.3)" stroke="#9FE1CB" stroke-width="1.2"/>
+        <ellipse cx="227" cy="111" rx="18" ry="14" fill="rgba(29,158,117,0.2)" stroke="#9FE1CB" stroke-width="1.2"/>
+        <ellipse cx="287" cy="111" rx="18" ry="14" fill="rgba(93,202,165,0.4)" stroke="#9FE1CB" stroke-width="1.5"/>
+        <!-- Labels -->
+        <text x="200" y="155" font-family="Arial" font-size="9" fill="#5DCAA5">Manual</text>
+        <text x="255" y="155" font-family="Arial" font-size="9" fill="#9FE1CB">Automated</text>
+        <!-- Arrow -->
+        <line x1="165" y1="100" x2="193" y2="100" stroke="#1D9E75" stroke-width="1.5"/>
+        <polygon points="193,96 200,100 193,104" fill="#1D9E75"/>
+        <!-- Title -->
+        <text x="20" y="170" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.4)">PIRMPA · Brain MRI Segmentation · ITK-SNAP</text>
+      </svg>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag tag-neuro">Neuroimaging</span>
+          <span class="tag tag-neuro">MRI</span>
+          <span class="tag tag-ia">ITK-SNAP</span>
+        </div>
+        <div class="project-title">Brain MRI Segmentation — Ventricular Dilation</div>
+        <div class="project-org">PIRMPA Platform · UPJV Amiens · Apr–Jun 2025</div>
+        <p class="project-desc">Manual and semi-automatic segmentation of rat brain MRIs using ITK-SNAP. Volumetric quantification of ventricular dilation to assess hydrocephalus risk. Comparative methodology: manual (gold standard) vs. automated segmentation. Supervised by Sidy Fall.</p>
+        <div class="project-meta">
+          <span class="project-date">Research Internship · 2025</span>
+          <a href="https://drive.google.com/file/d/1S1HrHoie7pV15G-IL0qO7Sc-0o4IUIx3/view?usp=sharing" class="project-link" target="_blank">View Report ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EEG -->
+    <div class="project-card">
+      <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="180" fill="#0d1f3c"/>
+        <!-- EEG waves - multiple channels -->
+        <polyline points="10,50 30,50 40,30 50,70 60,50 80,50 90,35 100,65 110,50 130,50 140,38 150,62 160,50 180,50" stroke="#378ADD" stroke-width="1.5" fill="none" opacity="0.9"/>
+        <polyline points="10,80 25,80 35,62 48,98 58,80 75,80 88,68 100,92 115,80 130,80 142,70 155,90 165,80 180,80" stroke="#85B7EB" stroke-width="1.5" fill="none" opacity="0.85"/>
+        <polyline points="10,110 28,110 38,95 52,125 62,110 78,110 90,100 104,120 118,110 133,110 144,102 157,118 168,110 180,110" stroke="#B5D4F4" stroke-width="1.5" fill="none" opacity="0.8"/>
+        <polyline points="10,140 30,140 42,128 54,152 64,140 80,140 92,132 106,148 120,140 136,140 148,133 160,147 170,140 180,140" stroke="#E6F1FB" stroke-width="1" fill="none" opacity="0.6"/>
+        <!-- Spectrum on right -->
+        <rect x="210" y="140" width="12" height="28" rx="2" fill="#185FA5" opacity="0.7"/>
+        <rect x="228" y="110" width="12" height="58" rx="2" fill="#378ADD" opacity="0.8"/>
+        <rect x="246" y="75" width="12" height="93" rx="2" fill="#85B7EB"/>
+        <rect x="264" y="95" width="12" height="73" rx="2" fill="#B5D4F4" opacity="0.85"/>
+        <rect x="282" y="120" width="12" height="48" rx="2" fill="#185FA5" opacity="0.7"/>
+        <rect x="300" y="135" width="12" height="33" rx="2" fill="#0C447C" opacity="0.6"/>
+        <rect x="318" y="145" width="12" height="23" rx="2" fill="#042C53" opacity="0.5"/>
+        <!-- Band labels -->
+        <text x="210" y="170" font-family="Arial" font-size="7" fill="#85B7EB">δ</text>
+        <text x="228" y="170" font-family="Arial" font-size="7" fill="#85B7EB">θ</text>
+        <text x="246" y="170" font-family="Arial" font-size="7" fill="#B5D4F4">α</text>
+        <text x="264" y="170" font-family="Arial" font-size="7" fill="#85B7EB">β</text>
+        <text x="282" y="170" font-family="Arial" font-size="7" fill="#378ADD">γ</text>
+        <!-- Axes -->
+        <line x1="200" y1="20" x2="200" y2="160" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <line x1="200" y1="160" x2="340" y2="160" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <!-- Channel labels -->
+        <text x="185" y="53" font-family="Arial" font-size="8" fill="#378ADD">Ch1</text>
+        <text x="185" y="83" font-family="Arial" font-size="8" fill="#85B7EB">Ch2</text>
+        <text x="185" y="113" font-family="Arial" font-size="8" fill="#B5D4F4">Ch3</text>
+        <text x="185" y="143" font-family="Arial" font-size="8" fill="#E6F1FB" opacity="0.6">Ch4</text>
+        <text x="20" y="175" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.35)">32-channel EEG · Spectral Analysis · MATLAB</text>
+      </svg>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag tag-bci">EEG</span>
+          <span class="tag tag-signal">Signal Processing</span>
+          <span class="tag tag-ia">MATLAB</span>
+        </div>
+        <div class="project-title">EEG Spectral Analysis — Resting State &amp; Frequency Tagging</div>
+        <div class="project-org">École Jules Verne · TIPS · 2026</div>
+        <p class="project-desc">Full spectral analysis pipeline on 32-channel EEG data. Epoching (30s windows), FFT, amplitude spectrum, inter-epoch averaging. Frequency band identification (delta, theta, alpha, beta). Part 2: spectral normalization for frequency-tagged stimulation response.</p>
+        <div class="project-meta">
+          <span class="project-date">Lab Project · 2026</span>
+          <a href="https://drive.google.com/file/d/1p-x4vY2hbwv1G0GFCyCVd-Trw_N0TsMw/view?usp=sharing" class="project-link" target="_blank">EEG repport 1 ↗</a>
+          <a href="https://drive.google.com/file/d/1Y_TQ94qcKYIv5FwdweqExWPma6dHCLJT/view?usp=sharing" class="project-link" target="_blank">EEG Code 1 ↗</a>
+          <a href="https://drive.google.com/file/d/1uAfSSmtgjlhJC9o52RIVCiV_irwwi6Bf/view?usp=sharing" class="project-link" target="_blank">EEG repport 2 ↗</a>
+          <a href="https://drive.google.com/file/d/16_Jzg4ktNZINguDNMDRCk9XOxp8kXsl5/view?usp=sharing" class="project-link" target="_blank">EEG Code 2 ↗</a>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- BCI -->
+    <div class="project-card">
+      <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="180" fill="#1a0a2e"/>
+        <!-- Brain outline -->
+        <ellipse cx="110" cy="88" rx="60" ry="52" fill="rgba(92,79,199,0.12)" stroke="#7B6EE8" stroke-width="2"/>
+        <path d="M75 70 Q85 55 100 60 Q110 45 125 58 Q140 50 148 68" stroke="#A89FF5" stroke-width="1.5" fill="none"/>
+        <path d="M70 88 Q78 78 90 82 Q98 72 112 78 Q122 68 135 75 Q145 82 148 92" stroke="#7B6EE8" stroke-width="1.2" fill="none"/>
+        <path d="M72 105 Q82 98 95 102 Q105 94 118 100 Q130 95 142 103" stroke="#5C4FC7" stroke-width="1.2" fill="none"/>
+        <!-- Signal lines from brain to device -->
+        <line x1="168" y1="75" x2="220" y2="60" stroke="#A89FF5" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <line x1="168" y1="88" x2="220" y2="88" stroke="#7B6EE8" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <line x1="168" y1="102" x2="220" y2="116" stroke="#5C4FC7" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <!-- Device/computer box -->
+        <rect x="220" y="45" width="80" height="90" rx="6" fill="rgba(92,79,199,0.15)" stroke="#7B6EE8" stroke-width="1.5"/>
+        <rect x="228" y="53" width="64" height="50" rx="4" fill="rgba(92,79,199,0.2)" stroke="#A89FF5" stroke-width="1"/>
+        <!-- Screen content: waveform -->
+        <polyline points="232,75 242,65 250,82 258,60 266,78 274,68 284,75" stroke="#A89FF5" stroke-width="1.5" fill="none"/>
+        <!-- Output arrow -->
+        <line x1="300" y1="90" x2="340" y2="90" stroke="#7B6EE8" stroke-width="2"/>
+        <polygon points="338,85 348,90 338,95" fill="#7B6EE8"/>
+        <!-- Output: arm/action -->
+        <circle cx="362" cy="90" r="18" fill="rgba(92,79,199,0.2)" stroke="#A89FF5" stroke-width="1.5"/>
+        <text x="355" y="94" font-family="Arial" font-size="14" fill="#A89FF5">✓</text>
+        <!-- EEG cap dots on brain -->
+        <circle cx="100" cy="60" r="3" fill="#EAE8F8"/>
+        <circle cx="120" cy="55" r="3" fill="#EAE8F8"/>
+        <circle cx="85" cy="75" r="3" fill="#EAE8F8"/>
+        <circle cx="138" cy="72" r="3" fill="#EAE8F8"/>
+        <circle cx="78" cy="95" r="3" fill="#EAE8F8"/>
+        <circle cx="143" cy="95" r="3" fill="#EAE8F8"/>
+        <text x="20" y="175" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.35)">Brain-Computer Interface · EEG · Neurofeedback · HRI</text>
+      </svg>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag tag-bci">BCI</span>
+          <span class="tag tag-bci">Neurofeedback</span>
+          <span class="tag tag-robot">HRI</span>
+        </div>
+        <div class="project-title">Brain-Computer Interfaces in Therapeutic Applications</div>
+        <div class="project-org">UPJV · Supervised by Ardalan Aarabi · 2024–2025</div>
+        <p class="project-desc">Study of BCI systems: invasive vs. non-invasive, EEG/ECoG/LFP signals, ML-based decoding, neurofeedback. Case study: AI-restored speech in paralyzed patient (UC San Francisco). Mobile robot control via image-processing + Tobii eye-tracker in BCI context.</p>
+        <div class="project-meta">
+          <span class="project-date">Research Report · EN · 2025</span>
+          <a href="https://drive.google.com/file/d/1H7PsqoBrNH_AVNx1KT3JS7U07jlFCi8k/view?usp=sharing" class="project-link" target="_blank">View Report ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARIA -->
+    <div class="project-card">
+      <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="180" fill="#1a0808"/>
+        <!-- Neural network being attacked -->
+        <!-- Nodes -->
+        <circle cx="50" cy="90" r="12" fill="rgba(163,45,45,0.3)" stroke="#E24B4A" stroke-width="1.5"/>
+        <circle cx="120" cy="55" r="10" fill="rgba(163,45,45,0.2)" stroke="#F09595" stroke-width="1.2"/>
+        <circle cx="120" cy="125" r="10" fill="rgba(163,45,45,0.2)" stroke="#F09595" stroke-width="1.2"/>
+        <circle cx="190" cy="40" r="9" fill="rgba(163,45,45,0.15)" stroke="#F7C1C1" stroke-width="1"/>
+        <circle cx="190" cy="90" r="9" fill="rgba(240,149,149,0.3)" stroke="#E24B4A" stroke-width="2"/>
+        <circle cx="190" cy="140" r="9" fill="rgba(163,45,45,0.15)" stroke="#F7C1C1" stroke-width="1"/>
+        <circle cx="260" cy="90" r="12" fill="rgba(163,45,45,0.4)" stroke="#E24B4A" stroke-width="2"/>
+        <!-- Connections -->
+        <line x1="62" y1="85" x2="110" y2="60" stroke="rgba(242,75,74,0.4)" stroke-width="1"/>
+        <line x1="62" y1="95" x2="110" y2="120" stroke="rgba(242,75,74,0.4)" stroke-width="1"/>
+        <line x1="130" y1="55" x2="181" y2="45" stroke="rgba(242,75,74,0.3)" stroke-width="1"/>
+        <line x1="130" y1="58" x2="181" y2="88" stroke="rgba(242,75,74,0.3)" stroke-width="1"/>
+        <line x1="130" y1="122" x2="181" y2="92" stroke="rgba(242,75,74,0.3)" stroke-width="1"/>
+        <line x1="130" y1="125" x2="181" y2="138" stroke="rgba(242,75,74,0.3)" stroke-width="1"/>
+        <line x1="199" y1="90" x2="248" y2="90" stroke="#E24B4A" stroke-width="2"/>
+        <!-- Poison injected - red X on middle node -->
+        <line x1="184" y1="83" x2="196" y2="97" stroke="#E24B4A" stroke-width="2.5"/>
+        <line x1="196" y1="83" x2="184" y2="97" stroke="#E24B4A" stroke-width="2.5"/>
+        <!-- Warning triangle -->
+        <polygon points="300,50 340,120 260,120" fill="rgba(163,45,45,0.2)" stroke="#E24B4A" stroke-width="2"/>
+        <text x="296" y="105" font-family="Arial" font-size="22" fill="#E24B4A" font-weight="bold">!</text>
+        <!-- Labels -->
+        <text x="270" y="145" font-family="Arial" font-size="9" fill="#F09595">Adversarial</text>
+        <text x="272" y="156" font-family="Arial" font-size="9" fill="#F09595">Attack</text>
+        <text x="155" y="175" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.35)">ARIA · AI Safety · Data Poisoning · Medical AI Ethics</text>
+      </svg>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag tag-ia">AI Safety</span>
+          <span class="tag tag-ethics">Ethics</span>
+          <span class="tag tag-ia">ML</span>
+        </div>
+        <div class="project-title">ARIA — AI Reliability &amp; Adversarial Attacks in Medical Systems</div>
+        <div class="project-org">École Jules Verne · TIPS · 2025–2026</div>
+        <p class="project-desc">Can AI be a reliable decision-making agent in critical medical contexts? Live demo of adversarial attacks (data poisoning, model compromise) on a self-built classifier. Interview with a digestive surgeon. Analysis of AI Act &amp; RGPD. Ethical responsibility framework.</p>
+        <div class="project-meta">
+          <span class="project-date">Group Project · 2025/2026</span>
+          <a href="https://github.com/ARIA-EIJV-2026/aria-projet" class="project-link" target="_blank">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TUMOR -->
+    <div class="project-card">
+      <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="180" fill="#0d1a0d"/>
+        <!-- Axes -->
+        <line x1="40" y1="20" x2="40" y2="150" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+        <line x1="40" y1="150" x2="370" y2="150" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+        <!-- Grid lines -->
+        <line x1="40" y1="50" x2="370" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="40" y1="80" x2="370" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="40" y1="110" x2="370" y2="110" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <!-- Curves: tumor growth under different doses -->
+        <polyline points="40,140 80,135 120,128 160,118 200,105 240,90 280,72 320,52 360,35" stroke="#E24B4A" stroke-width="2" fill="none" opacity="0.8"/>
+        <polyline points="40,140 80,134 120,125 160,112 200,95 240,78 280,68 320,60 360,55" stroke="#EF9F27" stroke-width="2" fill="none" opacity="0.8"/>
+        <polyline points="40,140 80,133 120,122 160,108 200,93 240,83 280,76 320,72 360,70" stroke="#63991A" stroke-width="2" fill="none" opacity="0.8"/>
+        <polyline points="40,140 80,132 120,120 160,107 200,100 240,96 280,93 320,91 360,90" stroke="#1D9E75" stroke-width="2" fill="none" opacity="0.9"/>
+        <polyline points="40,140 80,131 120,118 160,107 200,102 240,100 280,100 320,100 360,100" stroke="#5DCAA5" stroke-width="2.5" fill="none"/>
+        <!-- Legend -->
+        <line x1="220" y1="30" x2="240" y2="30" stroke="#E24B4A" stroke-width="2"/>
+        <text x="244" y="34" font-family="Arial" font-size="9" fill="#E24B4A">vM=1</text>
+        <line x1="280" y1="30" x2="300" y2="30" stroke="#5DCAA5" stroke-width="2"/>
+        <text x="304" y="34" font-family="Arial" font-size="9" fill="#5DCAA5">vM=5</text>
+        <!-- PID block -->
+        <rect x="290" y="100" width="60" height="30" rx="4" fill="rgba(29,158,117,0.15)" stroke="#1D9E75" stroke-width="1.2"/>
+        <text x="307" y="119" font-family="Arial" font-size="11" fill="#5DCAA5" font-weight="bold">PID</text>
+        <!-- Axis labels -->
+        <text x="170" y="168" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.4)">Time (days)</text>
+        <text x="8" y="95" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.4)" transform="rotate(-90,8,95)">Tumor pop.</text>
+        <text x="20" y="176" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.35)">MATLAB/Simulink · Tumor–Immune · PID Control</text>
+      </svg>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag tag-signal">MATLAB/Simulink</span>
+          <span class="tag tag-ia">Control Theory</span>
+          <span class="tag tag-neuro">Biomedical</span>
+        </div>
+        <div class="project-title">Tumor Growth Simulation &amp; Closed-Loop Chemotherapy Control</div>
+        <div class="project-org">École Jules Verne · Supervised by Jérôme Bosche · 2024</div>
+        <p class="project-desc">Nonlinear dynamical model of tumor–immune system under combined chemo/immunotherapy. Linearization, PID controller design (Bosche method), sensitivity analysis across 8 parameter combinations. Therapeutic protocol optimization.</p>
+        <div class="project-meta">
+          <span class="project-date">Lab Project · 2026</span>
+          <a href=" https://drive.google.com/file/d/1I49FMLc8IemNA-pqX54PmCFGQAwVXDH_/view?usp=sharing" class="project-link" target="_blank">View Report ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROBOT BAXTER -->
+    <div class="project-card">
+      <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="180" fill="#0d1520"/>
+        <!-- Robot body -->
+        <rect x="155" y="60" width="90" height="90" rx="8" fill="rgba(214,90,48,0.15)" stroke="#D85A30" stroke-width="2"/>
+        <!-- Robot head -->
+        <rect x="170" y="35" width="60" height="40" rx="6" fill="rgba(214,90,48,0.2)" stroke="#D85A30" stroke-width="1.5"/>
+        <!-- Eyes -->
+        <circle cx="185" cy="52" r="7" fill="rgba(214,90,48,0.3)" stroke="#F0997B" stroke-width="1.5"/>
+        <circle cx="215" cy="52" r="7" fill="rgba(214,90,48,0.3)" stroke="#F0997B" stroke-width="1.5"/>
+        <circle cx="185" cy="52" r="3" fill="#F0997B"/>
+        <circle cx="215" cy="52" r="3" fill="#F0997B"/>
+        <!-- Left arm -->
+        <line x1="155" y1="80" x2="100" y2="95" stroke="#D85A30" stroke-width="3" stroke-linecap="round"/>
+        <line x1="100" y1="95" x2="70" y2="120" stroke="#D85A30" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="70" cy="122" r="8" fill="rgba(214,90,48,0.3)" stroke="#F0997B" stroke-width="1.5"/>
+        <!-- Right arm -->
+        <line x1="245" y1="80" x2="300" y2="95" stroke="#D85A30" stroke-width="3" stroke-linecap="round"/>
+        <line x1="300" y1="95" x2="330" y2="120" stroke="#D85A30" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="330" cy="122" r="8" fill="rgba(214,90,48,0.3)" stroke="#F0997B" stroke-width="1.5"/>
+        <!-- Object being grabbed -->
+        <rect x="320" y="136" width="20" height="20" rx="3" fill="rgba(240,153,123,0.3)" stroke="#F0997B" stroke-width="1.5"/>
+        <!-- Template matching box -->
+        <rect x="52" y="108" width="36" height="28" rx="2" fill="none" stroke="#F5C4B3" stroke-width="1" stroke-dasharray="3,2"/>
+        <!-- GUI elements hint -->
+        <rect x="20" y="20" width="55" height="38" rx="4" fill="rgba(214,90,48,0.1)" stroke="#D85A30" stroke-width="1"/>
+        <rect x="24" y="24" width="47" height="8" rx="2" fill="rgba(214,90,48,0.3)"/>
+        <rect x="24" y="35" width="47" height="6" rx="2" fill="rgba(214,90,48,0.2)"/>
+        <rect x="24" y="44" width="47" height="6" rx="2" fill="rgba(214,90,48,0.2)"/>
+        <text x="20" y="175" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.35)">Baxter Robot · MATLAB GUIDE · Template Matching · Computer Vision</text>
+      </svg>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag tag-robot">Robotics</span>
+          <span class="tag tag-ia">Computer Vision</span>
+          <span class="tag tag-robot">HRI</span>
+        </div>
+        <div class="project-title">Baxter Surgical Robot — Control Interface &amp; Object Recognition</div>
+        <div class="project-org">UPJV · Supervised by Ardalan Aarabi · 2024–2025</div>
+        <p class="project-desc">MATLAB GUIDE interface for Baxter robot control. Image processing: RGB→Gray, edge detection (Sobel/Canny), binarization, template matching for autonomous object recognition. Integration of Thrustmaster joystick &amp; gamepad for real-time dual-arm control.</p>
+        <div class="project-meta">
+          <span class="project-date">Group Project · 2024/2025</span>
+          <a href="https://drive.google.com/file/d/1XmqlNghzaT3MlnGJAXm-72J2UmZTlTqc/view?usp=sharing" class="project-link" target="_blank">View Report ↗</a>
+          <a href="https://drive.google.com/file/d/1HIZLIxb4JG9tYu-O-e9fWLHeux0twkDF/view?usp=sharing" class="project-link" target="_blank">View video ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- NIRS -->
+    <div class="project-card">
+      <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="180" fill="#0a1a15"/>
+        <!-- Head silhouette -->
+        <ellipse cx="120" cy="95" rx="55" ry="62" fill="rgba(29,158,117,0.08)" stroke="#1D9E75" stroke-width="1.5"/>
+        <ellipse cx="120" cy="68" rx="40" ry="46" fill="rgba(29,158,117,0.12)" stroke="#5DCAA5" stroke-width="1.2"/>
+        <!-- NIRS probes on head -->
+        <circle cx="95" cy="52" r="5" fill="#1D9E75" opacity="0.9"/>
+        <circle cx="120" cy="45" r="5" fill="#1D9E75" opacity="0.9"/>
+        <circle cx="145" cy="52" r="5" fill="#1D9E75" opacity="0.9"/>
+        <circle cx="155" cy="72" r="5" fill="#5DCAA5" opacity="0.8"/>
+        <circle cx="85" cy="72" r="5" fill="#5DCAA5" opacity="0.8"/>
+        <!-- NIR light beams -->
+        <line x1="95" y1="57" x2="120" y2="80" stroke="#1D9E75" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+        <line x1="145" y1="57" x2="120" y2="80" stroke="#1D9E75" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+        <!-- rSO2 signal on right -->
+        <polyline points="210,100 230,85 250,110 270,75 290,95 310,80 330,90 350,78 370,88" stroke="#5DCAA5" stroke-width="2.5" fill="none"/>
+        <polyline points="210,130 230,120 250,140 270,118 290,130 310,122 330,128 350,120 370,125" stroke="#9FE1CB" stroke-width="1.5" fill="none" opacity="0.7"/>
+        <!-- Labels -->
+        <text x="210" y="165" font-family="Arial" font-size="9" fill="#5DCAA5">Left hemisphere</text>
+        <text x="210" y="175" font-family="Arial" font-size="9" fill="#9FE1CB" opacity="0.7">Right hemisphere</text>
+        <text x="355" y="88" font-family="Arial" font-size="8" fill="#5DCAA5">rSO₂</text>
+        <!-- Stroop label -->
+        <text x="85" y="148" font-family="Arial" font-size="10" fill="#1D9E75" font-weight="bold">STROOP</text>
+        <text x="20" y="176" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.35)">fNIRS · Eye-tracking · Cognitive Load · Cerebral Oxygenation</text>
+      </svg>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag tag-neuro">fNIRS</span>
+          <span class="tag tag-neuro">Eye-tracking</span>
+          <span class="tag tag-bci">Cognitive Neuro</span>
+        </div>
+        <div class="project-title">NIRS + Stroop Test — Cognitive Load &amp; Brain Oxygenation</div>
+        <div class="project-org">UPJV · Supervised by Ardalan Aarabi · 2025</div>
+        <p class="project-desc">Regional cerebral oxygen saturation (rSO₂) measurement under varying cognitive load using near-infrared spectroscopy. Combined with Stroop test for attentional control and inhibition assessment. Bilateral hemispheric monitoring during interference tasks.</p>
+        <div class="project-meta">
+          <span class="project-date">Lab Report · EN · 2025</span>
+          <a href="https://drive.google.com/file/d/10Fmhv1CsK9hjN90NZj3JWLnam6VPWYdV/view?usp=sharing" class="project-link" target="_blank">View Report ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ECG -->
+    <div class="project-card">
+      <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="180" fill="#0a1525"/>
+        <!-- ECG waveform: realistic PQRST -->
+        <polyline points="20,100 60,100 70,95 75,90 80,100 90,100 100,40 110,155 120,100 130,85 140,100 180,100 190,95 195,90 200,100 210,100 220,40 230,155 240,100 250,85 260,100 300,100 310,95 315,90 320,100 330,100 340,40 350,155 360,100 380,100" stroke="#378ADD" stroke-width="2.5" fill="none"/>
+        <!-- R-peak markers -->
+        <line x1="100" y1="35" x2="100" y2="155" stroke="#E24B4A" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+        <line x1="220" y1="35" x2="220" y2="155" stroke="#E24B4A" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+        <line x1="340" y1="35" x2="340" y2="155" stroke="#E24B4A" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+        <!-- R-peak dots -->
+        <circle cx="100" cy="40" r="4" fill="#E24B4A"/>
+        <circle cx="220" cy="40" r="4" fill="#E24B4A"/>
+        <circle cx="340" cy="40" r="4" fill="#E24B4A"/>
+        <!-- HRV annotation -->
+        <line x1="100" y1="165" x2="220" y2="165" stroke="#EF9F27" stroke-width="1.5"/>
+        <line x1="100" y1="161" x2="100" y2="169" stroke="#EF9F27" stroke-width="1.5"/>
+        <line x1="220" y1="161" x2="220" y2="169" stroke="#EF9F27" stroke-width="1.5"/>
+        <text x="145" y="162" font-family="Arial" font-size="8" fill="#EF9F27">RR interval</text>
+        <!-- Labels PQRST -->
+        <text x="68" y="110" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.5)">P</text>
+        <text x="97" y="32" font-family="Arial" font-size="9" fill="#85B7EB" font-weight="bold">R</text>
+        <text x="108" y="165" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.5)">S</text>
+        <text x="128" y="88" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.5)">T</text>
+        <text x="20" y="176" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.35)">ECG · Movesense · R-peak Detection · HRV Analysis · MATLAB</text>
+      </svg>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag tag-signal">ECG</span>
+          <span class="tag tag-signal">Signal Processing</span>
+          <span class="tag tag-ia">MATLAB</span>
+        </div>
+        <div class="project-title">ECG Signal Processing Pipeline — Movesense Wearable</div>
+        <div class="project-org">École Jules Verne · 2026</div>
+        <p class="project-desc">End-to-end MATLAB pipeline on real ECG data from Movesense wearable: bandpass filtering, noise removal, R-peak detection, HRV analysis. Autocorrelation, FFT spectral analysis, Granger causality extension. Signal processing from raw to clinical parameters.</p>
+        <div class="project-meta">
+          <span class="project-date">Academic Project · 2026</span>
+          <a href="https://drive.google.com/file/d/1ppbajAY1nDiupxE1bNIiqxgoWQ7XzWwk/view?usp=sharing" class="project-link" target="_blank">MATLAB Code ↗</a>
+          <a href="https://drive.google.com/file/d/18V3zl5DLEHmp58buIu7rVfHiZUAehfKL/view?usp=sharing" class="project-link" target="_blank">MATLAB Code ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--white); max-width:100%; padding:4rem 0;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 2rem;">
+    <p class="section-title">Technical Skills</p>
+    <div class="divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-label">Neurotech</div>
+        <div class="skill-items">
+          <span class="skill-pill">EEG Analysis</span><span class="skill-pill">fMRI / MRI</span>
+          <span class="skill-pill">ITK-SNAP</span><span class="skill-pill">BCI Systems</span>
+          <span class="skill-pill">Neurofeedback</span><span class="skill-pill">fNIRS</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">Programming</div>
+        <div class="skill-items">
+          <span class="skill-pill">Python</span><span class="skill-pill">MATLAB</span>
+          <span class="skill-pill">Simulink</span><span class="skill-pill">SQL</span>
+          <span class="skill-pill">R</span><span class="skill-pill">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">AI / ML</div>
+        <div class="skill-items">
+          <span class="skill-pill">Scikit-learn</span><span class="skill-pill">Deep Learning</span>
+          <span class="skill-pill">Random Forest</span><span class="skill-pill">ML pipelines</span>
+          <span class="skill-pill">PyTorch (learning)</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">Signal Processing</div>
+        <div class="skill-items">
+          <span class="skill-pill">FFT / Spectral</span><span class="skill-pill">Filtering</span>
+          <span class="skill-pill">HRV Analysis</span><span class="skill-pill">Granger causality</span>
+          <span class="skill-pill">Autocorrelation</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">Tools</div>
+        <div class="skill-items">
+          <span class="skill-pill">VSCode</span><span class="skill-pill">R Studio</span>
+          <span class="skill-pill">MariaDB</span><span class="skill-pill">Tobii Pro</span>
+          <span class="skill-pill">GitHub</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">Languages</div>
+        <div class="skill-items">
+          <span class="skill-pill">French C1</span><span class="skill-pill">English C1</span>
+          <span class="skill-pill">Spanish (learning)</span><span class="skill-pill">Arabic (native)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-title">About</p>
+  <div class="divider"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I am an engineering student specializing in <strong>Digital Health and AI</strong> at École Supérieure d'Ingénierie Jules Verne (Amiens, France), with a background in biomedical technologies and computational approaches.</p>
+      <p>My work sits at the intersection of <strong>neuroscience, signal processing, and machine learning</strong> — from EEG and MRI data analysis to Brain-Computer Interface systems and neuroimaging pipelines. I am particularly motivated by projects that bring technology closer to clinical and rehabilitation applications.</p>
+      <p>In summer 2026, I will complete a 9-week research internship at <strong>Forschungszentrum Jülich (INM-7)</strong>, one of Europe's leading neuroimaging research centers, working on fMRI analysis and ML methods under the supervision of Sarah Genon and Somayeh Maleki Balajoo.</p>
+      <p>I am currently seeking a <strong>2-year apprenticeship (2026–2028)</strong> in neurotech — BCI, neuroimaging, VR/XR or AI applied to neuroscience and health.</p>
+    </div>
+    <div>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div class="edu-content">
+            <div class="edu-degree">Engineering Degree — Digital Health &amp; AI</div>
+            <div class="edu-school">École Supérieure d'Ingénierie Jules Verne</div>
+            <div class="edu-year">2025 – 2028 · Amiens, France</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot" style="background:#1D9E75"></div>
+          <div class="edu-content">
+            <div class="edu-degree">Research Internship — Neuroimaging &amp; ML</div>
+            <div class="edu-school">Forschungszentrum Jülich · INM-7</div>
+            <div class="edu-year">Summer 2026 · Jülich, Germany</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot" style="background:#BA7517"></div>
+          <div class="edu-content">
+            <div class="edu-degree">Research Internship — Brain MRI Segmentation</div>
+            <div class="edu-school">PIRMPA Platform · UPJV Amiens</div>
+            <div class="edu-year">Apr – Jun 2025</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot" style="background:#888"></div>
+          <div class="edu-content">
+            <div class="edu-degree">Bachelor's in Health Sciences — TBTC track</div>
+            <div class="edu-school">Université Picardie Jules Verne</div>
+            <div class="edu-year">2022 – 2025 · Amiens, France</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot" style="background:#666"></div>
+          <div class="edu-content">
+            <div class="edu-degree">High School — Experimental Sciences · Honors</div>
+            <div class="edu-school">Lycée Ibn Zohr · Agadir, Morocco</div>
+            <div class="edu-year">2019 – 2020</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="contact-strip" id="contact">
+  <h2>Open to opportunities</h2>
+  <p>Seeking a 2-year apprenticeship (2026–2028) in neurotech · BCI · neuroimaging · AI for health.</p>
+  <div class="contact-links">
+    <a href="mailto:assya.ouazari@etud.u-picardie.fr" class="contact-link">✉ assya.ouazari@etud.u-picardie.fr</a>
+    <a href="tel:+33780810951" class="contact-link">📞 +33 7 80 81 09 51</a>
+    <a href="https://www.linkedin.com/in/assya-ouazari-523921253/" class="contact-link" target="_blank">LinkedIn ↗</a>
+    <a href="https://github.com/ARIA-EIJV-2026/aria-projet" class="contact-link" target="_blank">GitHub ARIA ↗</a>
+  </div>
+</div>
+
+<footer>
+  <p>Assya Ouazari · Engineering Student · Digital Health &amp; AI · Amiens, France · 2026</p>
+</footer>
+
+</body>
+</html>
