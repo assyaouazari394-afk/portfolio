@@ -17,7 +17,7 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: "Segoe UI", Arial, sans-serif; background: var(--light); color: var(--gray); line-height: 1.6; }
- 
+
 nav {
   position: sticky; top: 0; z-index: 100;
   background: var(--white); border-bottom: 1px solid #e0ddf8;
@@ -29,7 +29,7 @@ nav .logo { font-weight: 700; font-size: 16px; color: var(--violet); }
 nav ul { display: flex; gap: 1.5rem; list-style: none; }
 nav ul li a { text-decoration: none; font-size: 13px; color: var(--gray); transition: color 0.15s; }
 nav ul li a:hover { color: var(--violet); }
- 
+
 .hero {
   background: linear-gradient(135deg, #1A1A2E 0%, #2D2680 60%, #5C4FC7 100%);
   color: white; padding: 5rem 2rem 4rem; text-align: center; position: relative; overflow: hidden;
@@ -50,18 +50,18 @@ nav ul li a:hover { color: var(--violet); }
 .btn-primary:hover { background: #6a5dd4; }
 .btn-outline { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.4); }
 .btn-outline:hover { background: rgba(255,255,255,0.1); }
- 
+
 .stats { background: var(--white); display: flex; justify-content: center; flex-wrap: wrap; border-bottom: 1px solid #e8e5ff; }
 .stat { padding: 1.2rem 2.5rem; text-align: center; border-right: 1px solid #e8e5ff; }
 .stat:last-child { border-right: none; }
 .stat-num { font-size: 1.6rem; font-weight: 700; color: var(--violet); }
 .stat-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
- 
+
 section { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
 .section-title { font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
 .section-subtitle { font-size: 14px; color: #888; margin-bottom: 2rem; }
 .divider { width: 40px; height: 3px; background: var(--violet); border-radius: 2px; margin: 0.5rem 0 2rem; }
- 
+
 /* FEATURED */
 .featured-card {
   background: linear-gradient(135deg, var(--dark) 0%, #2D2680 100%);
@@ -81,7 +81,7 @@ section { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
 .featured-skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
 .featured-skill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 6px; font-size: 11px; color: #d4cfff; }
 .featured-svg { position: relative; z-index: 1; flex-shrink: 0; }
- 
+
 /* PROJECT GRID */
 .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
 .project-card {
@@ -91,10 +91,10 @@ section { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
   display: flex; flex-direction: column;
 }
 .project-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(92,79,199,0.12); }
- 
+
 /* SVG ILLUSTRATION BANNERS */
 .proj-banner { width: 100%; height: 180px; display: block; }
- 
+
 .project-body { padding: 1.2rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0.7rem; }
 .tag { font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
@@ -112,14 +112,14 @@ section { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
 .project-date { font-size: 11px; color: #aaa; }
 .project-link { font-size: 11px; color: var(--violet); text-decoration: none; border: 1px solid #c5bfff; padding: 4px 12px; border-radius: 6px; transition: background 0.15s; }
 .project-link:hover { background: var(--violet-light); }
- 
+
 /* SKILLS */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
 .skill-card { background: var(--white); border: 1px solid #e8e5ff; border-radius: 10px; padding: 1rem 1.2rem; }
 .skill-label { font-size: 11px; font-weight: 600; color: var(--violet); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
 .skill-items { display: flex; flex-wrap: wrap; gap: 5px; }
 .skill-pill { font-size: 11px; background: var(--violet-light); color: #3C3489; padding: 2px 8px; border-radius: 4px; }
- 
+
 /* ABOUT */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
 .about-text p { margin-bottom: 1rem; font-size: 14px; line-height: 1.8; }
@@ -129,16 +129,16 @@ section { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
 .edu-degree { font-size: 13px; font-weight: 600; color: var(--dark); }
 .edu-school { font-size: 12px; color: #888; }
 .edu-year { font-size: 11px; color: var(--violet); }
- 
+
 .contact-strip { background: var(--violet); color: white; padding: 3rem 2rem; text-align: center; }
 .contact-strip h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
 .contact-strip p { opacity: 0.85; margin-bottom: 1.5rem; }
 .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
 .contact-link { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 8px 20px; border-radius: 8px; text-decoration: none; font-size: 13px; }
 .contact-link:hover { background: rgba(255,255,255,0.25); }
- 
+
 footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 13px; }
- 
+
 @media (max-width: 640px) {
   .about-grid { grid-template-columns: 1fr; }
   .featured-card { grid-template-columns: 1fr; }
@@ -149,7 +149,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
 </style>
 </head>
 <body>
- 
+
 <nav>
   <div class="logo">Assya Ouazari</div>
   <ul>
@@ -159,7 +159,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
- 
+
 <div class="hero">
   <div class="hero-content">
     <h1>Assya <span>Ouazari</span></h1>
@@ -178,19 +178,19 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
     </div>
   </div>
 </div>
- 
+
 <div class="stats">
   <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Research Projects</div></div>
   <div class="stat"><div class="stat-num">2 years</div><div class="stat-label">Research Internships</div></div>
   <div class="stat"><div class="stat-num">1</div><div class="stat-label">International Internship</div></div>
   <div class="stat"><div class="stat-num">C1</div><div class="stat-label">English Level</div></div>
 </div>
- 
+
 <section id="projects">
   <p class="section-title">Projects &amp; Research</p>
   <div class="divider"></div>
   <p class="section-subtitle">Selected academic and research work — ordered by relevance to neurotech</p>
- 
+
   <!-- FEATURED JULICH -->
   <div class="featured-card">
     <div>
@@ -221,9 +221,9 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
       </svg>
     </div>
   </div>
- 
+
   <div class="project-grid">
- 
+
     <!-- MRI SEGMENTATION -->
     <div class="project-card">
       <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
@@ -271,7 +271,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
         </div>
       </div>
     </div>
- 
+
     <!-- EEG -->
     <div class="project-card">
       <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
@@ -323,7 +323,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
         </div>
       </div>
     </div>
- 
+
     <!-- BCI -->
     <div class="project-card">
       <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
@@ -372,7 +372,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
         </div>
       </div>
     </div>
- 
+
     <!-- ARIA -->
     <div class="project-card">
       <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
@@ -420,7 +420,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
         </div>
       </div>
     </div>
- 
+
     <!-- TUMOR -->
     <div class="project-card">
       <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
@@ -466,7 +466,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
         </div>
       </div>
     </div>
- 
+
     <!-- ROBOT BAXTER -->
     <div class="project-card">
       <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
@@ -515,7 +515,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
         </div>
       </div>
     </div>
- 
+
     <!-- NIRS -->
     <div class="project-card">
       <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
@@ -558,7 +558,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
         </div>
       </div>
     </div>
- 
+
     <!-- ECG -->
     <div class="project-card">
       <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
@@ -601,8 +601,8 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
         </div>
       </div>
     </div>
- 
- 
+
+
     <!-- IA SANTE - 6 TPs -->
     <div class="project-card">
       <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
@@ -657,10 +657,10 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
         </div>
       </div>
     </div>
- 
+
   </div>
 </section>
- 
+
 <!-- SKILLS -->
 <section id="skills" style="background:var(--white); max-width:100%; padding:4rem 0;">
   <div style="max-width:1100px; margin:0 auto; padding:0 2rem;">
@@ -717,7 +717,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
     </div>
   </div>
 </section>
- 
+
 <!-- ABOUT -->
 <section id="about">
   <p class="section-title">About</p>
@@ -775,7 +775,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
     </div>
   </div>
 </section>
- 
+
 <div class="contact-strip" id="contact">
   <h2>Open to opportunities</h2>
   <p>Seeking a 2-year apprenticeship (2026–2028) in neurotech · BCI · neuroimaging · AI for health.</p>
@@ -786,10 +786,10 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
     <a href="https://github.com/ARIA-EIJV-2026/aria-projet" class="contact-link" target="_blank">GitHub ARIA ↗</a>
   </div>
 </div>
- 
+
 <footer>
   <p>Assya Ouazari · Engineering Student · Digital Health &amp; AI · Amiens, France · 2026</p>
 </footer>
- 
+
 </body>
 </html>
