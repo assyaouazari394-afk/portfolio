@@ -180,7 +180,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
 </div>
 
 <div class="stats">
-  <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Research Projects</div></div>
+  <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Research Projects</div></div>
   <div class="stat"><div class="stat-num">2 years</div><div class="stat-label">Research Internships</div></div>
   <div class="stat"><div class="stat-num">1</div><div class="stat-label">International Internship</div></div>
   <div class="stat"><div class="stat-num">C1</div><div class="stat-label">English Level</div></div>
@@ -377,45 +377,58 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
     <div class="project-card">
       <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
         <rect width="400" height="180" fill="#1a0808"/>
-        <!-- Neural network being attacked -->
-        <!-- Nodes -->
-        <circle cx="50" cy="90" r="12" fill="rgba(163,45,45,0.3)" stroke="#E24B4A" stroke-width="1.5"/>
-        <circle cx="120" cy="55" r="10" fill="rgba(163,45,45,0.2)" stroke="#F09595" stroke-width="1.2"/>
-        <circle cx="120" cy="125" r="10" fill="rgba(163,45,45,0.2)" stroke="#F09595" stroke-width="1.2"/>
-        <circle cx="190" cy="40" r="9" fill="rgba(163,45,45,0.15)" stroke="#F7C1C1" stroke-width="1"/>
-        <circle cx="190" cy="90" r="9" fill="rgba(240,149,149,0.3)" stroke="#E24B4A" stroke-width="2"/>
-        <circle cx="190" cy="140" r="9" fill="rgba(163,45,45,0.15)" stroke="#F7C1C1" stroke-width="1"/>
-        <circle cx="260" cy="90" r="12" fill="rgba(163,45,45,0.4)" stroke="#E24B4A" stroke-width="2"/>
-        <!-- Connections -->
-        <line x1="62" y1="85" x2="110" y2="60" stroke="rgba(242,75,74,0.4)" stroke-width="1"/>
-        <line x1="62" y1="95" x2="110" y2="120" stroke="rgba(242,75,74,0.4)" stroke-width="1"/>
-        <line x1="130" y1="55" x2="181" y2="45" stroke="rgba(242,75,74,0.3)" stroke-width="1"/>
-        <line x1="130" y1="58" x2="181" y2="88" stroke="rgba(242,75,74,0.3)" stroke-width="1"/>
-        <line x1="130" y1="122" x2="181" y2="92" stroke="rgba(242,75,74,0.3)" stroke-width="1"/>
-        <line x1="130" y1="125" x2="181" y2="138" stroke="rgba(242,75,74,0.3)" stroke-width="1"/>
-        <line x1="199" y1="90" x2="248" y2="90" stroke="#E24B4A" stroke-width="2"/>
-        <!-- Poison injected - red X on middle node -->
-        <line x1="184" y1="83" x2="196" y2="97" stroke="#E24B4A" stroke-width="2.5"/>
-        <line x1="196" y1="83" x2="184" y2="97" stroke="#E24B4A" stroke-width="2.5"/>
-        <!-- Warning triangle -->
-        <polygon points="300,50 340,120 260,120" fill="rgba(163,45,45,0.2)" stroke="#E24B4A" stroke-width="2"/>
-        <text x="296" y="105" font-family="Arial" font-size="22" fill="#E24B4A" font-weight="bold">!</text>
-        <!-- Labels -->
-        <text x="270" y="145" font-family="Arial" font-size="9" fill="#F09595">Adversarial</text>
-        <text x="272" y="156" font-family="Arial" font-size="9" fill="#F09595">Attack</text>
-        <text x="155" y="175" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.35)">ARIA · AI Safety · Data Poisoning · Medical AI Ethics</text>
+        <!-- Architecture: 3 blocks -->
+        <!-- Dataset block -->
+        <rect x="15" y="55" width="70" height="40" rx="4" fill="rgba(163,45,45,0.15)" stroke="#F09595" stroke-width="1.2"/>
+        <text x="50" y="71" font-family="Arial" font-size="8" fill="#F09595" text-anchor="middle">Heart Disease</text>
+        <text x="50" y="83" font-family="Arial" font-size="8" fill="#F7C1C1" text-anchor="middle">UCI · 1025 pts</text>
+        <text x="50" y="104" font-family="Arial" font-size="7" fill="#F09595" text-anchor="middle">13 features</text>
+        <!-- Arrow -->
+        <line x1="85" y1="75" x2="100" y2="75" stroke="#E24B4A" stroke-width="1.5"/>
+        <polygon points="100,71 107,75 100,79" fill="#E24B4A"/>
+        <!-- Model block -->
+        <rect x="107" y="50" width="70" height="50" rx="4" fill="rgba(163,45,45,0.2)" stroke="#E24B4A" stroke-width="1.5"/>
+        <text x="142" y="68" font-family="Arial" font-size="8" fill="#E24B4A" text-anchor="middle" font-weight="bold">Random</text>
+        <text x="142" y="79" font-family="Arial" font-size="8" fill="#E24B4A" text-anchor="middle" font-weight="bold">Forest</text>
+        <text x="142" y="92" font-family="Arial" font-size="9" fill="#F09595" text-anchor="middle">98.5%</text>
+        <!-- model.pkl with X -->
+        <rect x="117" y="97" width="50" height="14" rx="2" fill="rgba(163,45,45,0.3)" stroke="#E24B4A" stroke-width="1"/>
+        <text x="142" y="108" font-family="Arial" font-size="7" fill="#F7C1C1" text-anchor="middle">model.pkl ⚠</text>
+        <!-- Arrow -->
+        <line x1="177" y1="75" x2="192" y2="75" stroke="#E24B4A" stroke-width="1.5"/>
+        <polygon points="192,71 199,75 192,79" fill="#E24B4A"/>
+        <!-- Interface React -->
+        <rect x="199" y="45" width="75" height="60" rx="4" fill="rgba(163,45,45,0.12)" stroke="#F09595" stroke-width="1.2"/>
+        <text x="236" y="62" font-family="Arial" font-size="8" fill="#F09595" text-anchor="middle">React UI</text>
+        <rect x="207" y="66" width="58" height="18" rx="3" fill="rgba(163,45,45,0.25)" stroke="#E24B4A" stroke-width="1"/>
+        <text x="236" y="79" font-family="Arial" font-size="8" fill="white" text-anchor="middle">RISQUE DÉTECTÉ</text>
+        <text x="236" y="94" font-family="Arial" font-size="7" fill="#F09595" text-anchor="middle">Confiance: 97%</text>
+        <!-- Attack arrow pointing to model -->
+        <line x1="300" y1="130" x2="155" y2="115" stroke="#E24B4A" stroke-width="2" stroke-dasharray="5,3"/>
+        <polygon points="157,110 145,118 163,120" fill="#E24B4A"/>
+        <text x="310" y="118" font-family="Arial" font-size="8" fill="#E24B4A">MODEL</text>
+        <text x="310" y="130" font-family="Arial" font-size="8" fill="#E24B4A">SWAP</text>
+        <text x="310" y="142" font-family="Arial" font-size="7" fill="#F09595">&lt;10 sec</text>
+        <!-- SHA-256 shield -->
+        <polygon points="352,50 372,58 372,78 352,86 332,78 332,58" fill="rgba(29,158,117,0.15)" stroke="#1D9E75" stroke-width="1.5"/>
+        <text x="352" y="71" font-family="Arial" font-size="7" fill="#5DCAA5" text-anchor="middle">SHA</text>
+        <text x="352" y="81" font-family="Arial" font-size="7" fill="#5DCAA5" text-anchor="middle">256</text>
+        <text x="352" y="98" font-family="Arial" font-size="7" fill="#5DCAA5" text-anchor="middle">Defence</text>
+        <text x="20" y="170" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.35)">Python · Flask · React · Random Forest · SHA-256 · AI Act · EIJV 2025–2026</text>
       </svg>
       <div class="project-body">
         <div class="project-tags">
           <span class="tag tag-ia">AI Safety</span>
           <span class="tag tag-ethics">Ethics</span>
-          <span class="tag tag-ia">ML</span>
+          <span class="tag tag-ia">ML · Flask · React</span>
+          <span class="tag tag-robot">Cybersecurity</span>
         </div>
-        <div class="project-title">ARIA — AI Reliability &amp; Adversarial Attacks in Medical Systems</div>
-        <div class="project-org">École Jules Verne · TIPS · 2025–2026</div>
-        <p class="project-desc">Can AI be a reliable decision-making agent in critical medical contexts? Live demo of adversarial attacks (data poisoning, model compromise) on a self-built classifier. Interview with a digestive surgeon. Analysis of AI Act &amp; RGPD. Ethical responsibility framework.</p>
+        <div class="project-title">ARIA — Medical AI We Built… and Hacked Live</div>
+        <div class="project-org">École Jules Verne · TIPS · 2025–2026 · Presented 19/05/2026</div>
+        <p class="project-desc">36-page end-of-year thesis. Built a real cardiac risk prediction system (Random Forest 98.5%, Heart Disease UCI, 1025 patients, 13 features) with a Flask API + React interface — then live-demonstrated a model swap attack in &lt;10 seconds: predictions fully inverted, zero visual change for the clinician. SHA-256 cryptographic defence implemented. Expert interview with Dr Wissam Azbabay, vascular surgeon. Analysis of EU AI Act, RGPD, XAI, Human-in-the-loop. Team: TIPS + GEE + Cybersecurity.</p>
         <div class="project-meta">
-          <span class="project-date">Group Project · 2025/2026</span>
+          <span class="project-date">End-of-year thesis · 2025/2026 ✓</span>
+          <a href="https://drive.google.com/file/d/1YbtfvEoUyMob6d7udpXC84Fjje5dN2HG/view?usp=sharing" class="project-link" target="_blank">View Report ↗</a>
           <a href="https://github.com/ARIA-EIJV-2026/aria-projet" class="project-link" target="_blank">GitHub ↗</a>
         </div>
       </div>
@@ -602,6 +615,119 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: cent
       </div>
     </div>
 
+
+
+    <!-- AVC STROKE PREDICTION -->
+    <div class="project-card">
+      <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="180" fill="#1a0a1a"/>
+        <!-- ROC curve -->
+        <line x1="30" y1="20" x2="30" y2="155" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <line x1="30" y1="155" x2="185" y2="155" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <line x1="30" y1="155" x2="185" y2="20" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4,3"/>
+        <path d="M30,155 Q50,140 70,110 Q90,75 110,50 Q130,35 150,28 Q165,24 185,20" stroke="#A89FF5" stroke-width="2.5" fill="none"/>
+        <text x="35" y="170" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.4)">FPR</text>
+        <text x="8" y="90" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.4)" transform="rotate(-90,8,90)">TPR</text>
+        <text x="55" y="60" font-family="Arial" font-size="8" fill="#A89FF5">AUC = 0.84</text>
+        <!-- Model comparison bars -->
+        <text x="210" y="30" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.5)">Recall (AVC)</text>
+        <rect x="210" y="38" width="32" height="14" rx="2" fill="rgba(92,79,199,0.2)" stroke="#5C4FC7" stroke-width="1"/>
+        <text x="213" y="49" font-family="Arial" font-size="7" fill="#A89FF5">LR bal.</text>
+        <rect x="246" y="38" width="14" height="14" rx="2" fill="rgba(92,79,199,0.5)"/>
+        <text x="248" y="49" font-family="Arial" font-size="7" fill="white">80%</text>
+        <rect x="210" y="58" width="32" height="14" rx="2" fill="rgba(29,158,117,0.2)" stroke="#1D9E75" stroke-width="1"/>
+        <text x="213" y="69" font-family="Arial" font-size="7" fill="#5DCAA5">RF bal.</text>
+        <rect x="246" y="58" width="11" height="14" rx="2" fill="rgba(29,158,117,0.5)"/>
+        <text x="248" y="69" font-family="Arial" font-size="7" fill="white">62%</text>
+        <rect x="210" y="78" width="32" height="14" rx="2" fill="rgba(239,159,39,0.2)" stroke="#EF9F27" stroke-width="1"/>
+        <text x="213" y="89" font-family="Arial" font-size="7" fill="#EF9F27">SMOTE</text>
+        <rect x="246" y="78" width="11" height="14" rx="2" fill="rgba(239,159,39,0.5)"/>
+        <text x="248" y="89" font-family="Arial" font-size="7" fill="white">80%</text>
+        <!-- Patient icons -->
+        <circle cx="310" cy="60" r="20" fill="rgba(163,45,45,0.15)" stroke="#E24B4A" stroke-width="1.5"/>
+        <text x="303" y="65" font-family="Arial" font-size="14">🧠</text>
+        <text x="295" y="90" font-family="Arial" font-size="8" fill="#F09595">AVC détecté</text>
+        <circle cx="370" cy="60" r="20" fill="rgba(29,158,117,0.15)" stroke="#1D9E75" stroke-width="1.5"/>
+        <text x="362" y="65" font-family="Arial" font-size="14">✓</text>
+        <text x="356" y="90" font-family="Arial" font-size="8" fill="#5DCAA5">Pas d'AVC</text>
+        <!-- Dataset info -->
+        <text x="210" y="115" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.5)">5 110 patients</text>
+        <text x="210" y="128" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.4)">95% / 5% imbalance</text>
+        <text x="210" y="141" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.4)">SMOTE · Threshold tuning</text>
+        <text x="20" y="176" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.35)">Python · Scikit-learn · ML médical · Prédiction AVC · ROC · SMOTE</text>
+      </svg>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag tag-ia">Machine Learning</span>
+          <span class="tag tag-ia">Python</span>
+          <span class="tag tag-neuro">Médical</span>
+          <span class="tag tag-ia">Scikit-learn</span>
+        </div>
+        <div class="project-title">Stroke Risk Prediction — ML on 5,110 Patient Records</div>
+        <div class="project-org">École Jules Verne · TIPS · 2026</div>
+        <p class="project-desc">Supervised ML pipeline on a real medical dataset (healthcare-stroke-data). Comparison of 5 models: Logistic Regression, Random Forest, Gradient Boosting (with/without class balancing). Handled severe class imbalance (95%/5%) via class_weight='balanced' and SMOTE. ROC curve (AUC=0.84), confusion matrix, medical decision threshold tuning to maximize stroke recall — clinically critical objective.</p>
+        <div class="project-meta">
+          <span class="project-date">Python Lab · 2026</span>
+          <span class="project-link">Notebook</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMG SMART GRIP -->
+    <div class="project-card">
+      <svg class="proj-banner" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="180" fill="#0d1a0a"/>
+        <!-- Arm with electrodes -->
+        <ellipse cx="95" cy="95" rx="45" ry="25" fill="rgba(186,117,23,0.1)" stroke="#BA7517" stroke-width="1.5"/>
+        <ellipse cx="95" cy="95" rx="35" ry="18" fill="rgba(186,117,23,0.08)" stroke="#EF9F27" stroke-width="1"/>
+        <!-- Electrode dots -->
+        <circle cx="75" cy="85" r="5" fill="#EF9F27" opacity="0.9"/>
+        <circle cx="95" cy="80" r="5" fill="#EF9F27" opacity="0.9"/>
+        <circle cx="115" cy="85" r="5" fill="#BA7517" opacity="0.8"/>
+        <!-- Wires from electrodes to arduino -->
+        <line x1="75" y1="85" x2="185" y2="75" stroke="#EF9F27" stroke-width="1" stroke-dasharray="3,2" opacity="0.7"/>
+        <line x1="95" y1="80" x2="185" y2="80" stroke="#EF9F27" stroke-width="1" stroke-dasharray="3,2" opacity="0.7"/>
+        <line x1="115" y1="85" x2="185" y2="85" stroke="#BA7517" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+        <!-- Arduino board -->
+        <rect x="185" y="60" width="70" height="50" rx="4" fill="rgba(29,158,117,0.15)" stroke="#1D9E75" stroke-width="1.5"/>
+        <text x="196" y="80" font-family="Arial" font-size="8" fill="#5DCAA5" font-weight="bold">Arduino</text>
+        <text x="196" y="93" font-family="Arial" font-size="8" fill="#5DCAA5">MKR1010</text>
+        <rect x="190" y="97" width="55" height="6" rx="2" fill="rgba(29,158,117,0.3)"/>
+        <!-- WiFi signal -->
+        <path d="M265,75 Q275,65 285,75" stroke="#1D9E75" stroke-width="1.5" fill="none"/>
+        <path d="M262,68 Q275,55 288,68" stroke="#1D9E75" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="275" cy="78" r="2" fill="#1D9E75"/>
+        <!-- EMG signal output -->
+        <polyline points="30,130 50,130 58,115 65,145 72,120 80,130 100,130 108,110 115,148 122,125 130,130 150,130" stroke="#EF9F27" stroke-width="2" fill="none"/>
+        <!-- Calibration levels -->
+        <line x1="30" y1="118" x2="155" y2="118" stroke="#E24B4A" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.6"/>
+        <line x1="30" y1="130" x2="155" y2="130" stroke="#EF9F27" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.6"/>
+        <line x1="30" y1="142" x2="155" y2="142" stroke="#1D9E75" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.6"/>
+        <text x="158" y="121" font-family="Arial" font-size="7" fill="#E24B4A">Max</text>
+        <text x="158" y="133" font-family="Arial" font-size="7" fill="#EF9F27">Mid</text>
+        <text x="158" y="145" font-family="Arial" font-size="7" fill="#1D9E75">Min</text>
+        <!-- LED feedback -->
+        <circle cx="330" cy="80" r="12" fill="rgba(29,158,117,0.3)" stroke="#1D9E75" stroke-width="2"/>
+        <text x="323" y="85" font-family="Arial" font-size="12">💚</text>
+        <text x="318" y="103" font-family="Arial" font-size="8" fill="#5DCAA5">Feedback</text>
+        <text x="20" y="176" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.35)">Arduino MKR1010 · Capteur EMG · IoT · WiFi/LoRa · Rééducation</text>
+      </svg>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag tag-signal">IoT / Embarqué</span>
+          <span class="tag tag-signal">EMG</span>
+          <span class="tag tag-neuro">Rééducation</span>
+          <span class="tag tag-robot">Arduino</span>
+        </div>
+        <div class="project-title">EMG Smart Grip — IoT Embedded System for Muscle Monitoring</div>
+        <div class="project-org">École Jules Verne · TIPS · 2026 — en cours</div>
+        <p class="project-desc">Arduino MKR1010 + Grove EMG sensor measuring forearm muscle activity in real time. Personalized 3-level calibration, RGB LCD 16×2 + LED Bar visual feedback (color-coded by level). WiFi web interface with live Chart.js graph, game mode (score + countdown timer + random targets), session statistics (mean, max, active time) and CSV export. Nearly complete — pending electrode quality upgrade.</p>
+        <div class="project-meta">
+          <span class="project-date">Group project · 2026 — nearly complete</span>
+          <span class="project-link">In progress</span>
+        </div>
+      </div>
+    </div>
 
     <!-- IA SANTE - 6 TPs -->
     <div class="project-card">
